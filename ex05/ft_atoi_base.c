@@ -6,7 +6,7 @@
 /*   By: truello <thomasdelan2@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 16:24:54 by truello           #+#    #+#             */
-/*   Updated: 2023/09/05 10:26:10 by truello          ###   ########.fr       */
+/*   Updated: 2023/09/05 17:23:06 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	check_base(char *base)
 			{
 				if ((i != j && base[i] == base[j])
 					|| base[i] == '-' || base[i] == '+'
-						|| ft_is_space(base[i]))
+					|| ft_is_space(base[i]))
 					return (0);
 				j++;
 			}
