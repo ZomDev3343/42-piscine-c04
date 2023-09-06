@@ -6,7 +6,7 @@
 /*   By: truello <thomasdelan2@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 15:57:53 by truello           #+#    #+#             */
-/*   Updated: 2023/09/05 10:17:13 by truello          ###   ########.fr       */
+/*   Updated: 2023/09/06 19:22:28 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,19 @@ int	ft_is_space(char c)
 
 int	ft_atoi(char *str)
 {
-	int		i;
-	int		r;
-	int		minus_count;
+	int			i;
+	long int	r;
+	int			minus_count;
 
-	i = 0;
+	i = -1;
 	r = 0;
 	minus_count = 0;
-	while (ft_is_space(str[i]) || str[i] == '-' || str[i] == '+')
+	while (ft_is_space(str[++i]) || str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
 			minus_count++;
-		i++;
+		if ((str[i] == '-' || str[i] == '+') && ft_is_space(str[i + 1]))
+			return (0);
 	}
 	while ((str[i] >= '0' && str[i] <= '9'))
 	{

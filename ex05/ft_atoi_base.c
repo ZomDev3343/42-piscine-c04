@@ -6,7 +6,7 @@
 /*   By: truello <thomasdelan2@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 16:24:54 by truello           #+#    #+#             */
-/*   Updated: 2023/09/05 17:23:06 by truello          ###   ########.fr       */
+/*   Updated: 2023/09/06 19:19:08 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	check_base(char *base)
 	return (0);
 }
 
-int	is_char_in_base(char *base, char c, int *value, int base_len)
+int	is_char_in_base(char *base, char c, long int *value, int base_len)
 {
 	int	i;
 
@@ -75,22 +75,23 @@ int	is_char_in_base(char *base, char c, int *value, int base_len)
 
 int	ft_atoi_base(char *nbr, char *base)
 {
-	int	i;
-	int	r;
-	int	minus_count;
-	int	base_len;
+	int			i;
+	long int	r;
+	int			minus_count;
+	int			base_len;
 
-	i = 0;
+	i = -1;
 	r = 0;
 	base_len = ft_strlen(base);
 	minus_count = 0;
 	if (check_base(base))
 	{
-		while (ft_is_space(nbr[i]) || nbr[i] == '-' || nbr[i] == '+')
+		while (ft_is_space(nbr[++i]) || nbr[i] == '-' || nbr[i] == '+')
 		{
 			if (nbr[i] == '-')
 				minus_count++;
-			i++;
+			if ((nbr[i] == '-' || nbr[i] == '+') && ft_is_space(nbr[i + 1]))
+				return (0);
 		}
 		while (is_char_in_base(base, nbr[i], &r, base_len))
 			i++;
